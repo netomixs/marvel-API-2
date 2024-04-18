@@ -14,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
+    L5Swagger\L5SwaggerServiceProvider::class,
     'name' => env('APP_NAME', 'Laravel'),
 
     /*

@@ -2,9 +2,10 @@
 
 namespace App\Api\Crosscuting;
 
- 
+use JsonSerializable;
 
-class Respuesta
+
+class Respuesta  implements JsonSerializable
 {
     public $Code;
     public $CodeDesc;
@@ -22,9 +23,18 @@ class Respuesta
         $this->Data = $Data;
         return $this;
     }
-    
+    public function jsonSerialize()
+    {
+        return [
+            'Code' => $this->Code,
+            'CodeDesc' => $this->CodeDesc,
+            'IsSuccess' => $this->IsSuccess,
+            'Message' => $this->Message,
+            'Data' => $this->Data,
+        ];
+    }
     public function toJson()
     {
-        return json_encode($this);
+        return json_encode($this,JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     }
 }

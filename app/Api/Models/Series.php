@@ -6,9 +6,8 @@ class Series
 {
     public int $id;
     public string $title;
-    public null $description;
+    public string $description;
     public string $resourceUri;
-    /** @var Urls[] */
     public array $urls;
     public int $startYear;
     public int $endYear;

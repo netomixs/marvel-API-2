@@ -1,7 +1,37 @@
 <?php
 
 namespace App\Api\Models;
-
+/**
+ * @OA\Schema(
+ *     schema="Character",
+ *     type="object",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer",
+ *         description="ID del personaje"
+ *     ),
+ *     @OA\Property(
+ *         property="name",
+ *         type="string",
+ *         description="Nombre del personaje"
+ *     ),
+ *     @OA\Property(
+ *         property="description",
+ *         type="string",
+ *         description="Descripcion del personaje"
+ *     ),
+ *     @OA\Property(
+ *         property="modified",
+ *         type="string",
+ *         description="Ultima modificacion del personaje"
+ *     ),
+ *     @OA\Property(
+ *         property="resourceUri",
+ *         type="string",
+ *         description="Recursos del personaje"
+ *     ),
+ * )
+ */
 class Characters
 {
     public int $id;
@@ -14,12 +44,10 @@ class Characters
    // public Series $series;
    // public Stories $stories;
    // public Events $events;
-    /** @var Urls[] */
+
     public array $urls;
 
-    /**
-     * @param Urls[] $urls
-     */ 
+
     public function set($data)
     {
         foreach ($data as $key => $value) {

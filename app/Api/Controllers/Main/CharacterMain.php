@@ -15,6 +15,27 @@ class CharacterMain implements ICharacterMain
     {
         $this->domainChareacter = new CharacterDomain();
     }
+    /**
+ * @OA\Get(
+ *     path="/api/character",
+ *     tags={"Character"},
+ *     summary="Obtener todos los personajes",
+ *     description="Devuelve una lista de personajes",
+ *     @OA\Response(
+ *         response=200,
+ *         description="Operación exitosa",
+ *         @OA\JsonContent(ref="#/components/schemas/Character")
+ *     ),
+ *     @OA\Response(
+ *         response=204,
+ *         description="Sin contenido, no hay personajes disponibles",
+ *     ),
+ *     @OA\Response(
+ *         response=500,
+ *         description="Error interno del servidor",
+ *     )
+ * )
+ */
     public function getAll()
     {
         $response = new Respuesta();

@@ -15,6 +15,6 @@ use App\Http\Controllers\Api\UserController;
 */
 
  
-Route::get('hola','App\Http\Controllers\Api\UserController@index');
-Route::get('m','App\Api\Infrestructure\Repository\CharacterRepository@getAll');
-Route::get('m','App\Api\Controllers\Main\CharacterMain@getAll');
+ 
+ 
+Route::get('character','App\Api\Controllers\Main\CharacterMain@getAll');

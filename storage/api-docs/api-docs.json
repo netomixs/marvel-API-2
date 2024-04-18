@@ -1,0 +1,66 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API MARVEL",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/character": {
+            "get": {
+                "tags": [
+                    "Character"
+                ],
+                "summary": "Obtener todos los personajes",
+                "description": "Devuelve una lista de personajes",
+                "operationId": "4410cdf2b47d6337cff00da491a39d49",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Sin contenido, no hay personajes disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Character": {
+                "properties": {
+                    "id": {
+                        "description": "ID del personaje",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del personaje",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripcion del personaje",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "Ultima modificacion del personaje",
+                        "type": "string"
+                    },
+                    "resourceUri": {
+                        "description": "Recursos del personaje",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
