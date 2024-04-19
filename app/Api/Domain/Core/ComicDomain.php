@@ -1,52 +1,27 @@
 <?php
 
 namespace App\Api\Domain\Core;
-
-use App\Api\Domain\Interfaces\ICharacterDomain;
-use App\Api\Crosscuting\Api;
-use App\Api\Infrestructure\Repository\CharacterRepository;
+use App\Api\Domain\Interfaces\IComicDomain;
+use App\Api\Infrestructure\Repository\ComicRepository;
 use  App\Api\Models\Characters;
 use App\Api\Models\Comics;
+use App\Api\Models\Creators;
 use App\Api\Models\Events;
 use App\Api\Models\Series;
 use App\Api\Models\Stories;
 
-class CharacterDomain implements ICharacterDomain
+class ComicDomain implements IComicDomain
 {
     private $repostorioChareacter;
     public function __construct()
     {
-        $this->repostorioChareacter = new CharacterRepository();
+        $this->repostorioChareacter = new ComicRepository();
     }
     public function getAll()
     {
         $response = $this->repostorioChareacter->getAll();
-        $data=$response["results"];
+        $data = $response["results"];
         //echo json_encode($data);
-        $modelos = array();
-        foreach ($data as $item) {
-            $modelo = new Characters();
-            $modelo->set($item);
-            $modelos[] = $modelo;
-        }
-        return $modelos;
-    }
-    public function get($id)
-    {
-        $response = $this->repostorioChareacter->get($id);
-        $data=$response["results"];
- 
-        foreach ($data as $item) {
-            $modelo = new Characters();
-            $modelo->set($item);
-            $modelos[] = $modelo;
-        }
-        return $modelos;
-    }
-    public function getComic($id)
-    {
-        $response = $this->repostorioChareacter->getComic($id);
-        $data=$response["results"];
         $modelos = array();
         foreach ($data as $item) {
             $modelo = new Comics();
@@ -55,10 +30,34 @@ class CharacterDomain implements ICharacterDomain
         }
         return $modelos;
     }
-    public function getEvent($id)
+    public function get($id)
     {
-        $response = $this->repostorioChareacter->getEvent($id);
-        $data=$response["results"];
+        $response = $this->repostorioChareacter->get($id);
+        $data = $response["results"];
+
+        foreach ($data as $item) {
+            $modelo = new Comics();
+            $modelo->set($item);
+            $modelos[] = $modelo;
+        }
+        return $modelos;
+    }
+    public function getCharacters($id)
+    {
+        $response = $this->repostorioChareacter->getCharacters($id);
+        $data = $response["results"];
+        $modelos = array();
+        foreach ($data as $item) {
+            $modelo = new Characters();
+            $modelo->set($item);
+            $modelos[] = $modelo;
+        }
+        return $modelos;
+    }
+    public function getEvents($id)
+    {
+        $response = $this->repostorioChareacter->getEvents($id);
+        $data = $response["results"];
         $modelos = array();
         foreach ($data as $item) {
             $modelo = new Events();
@@ -67,13 +66,13 @@ class CharacterDomain implements ICharacterDomain
         }
         return $modelos;
     }
-    public function getSeries($id)
+    public function getCreators($id)
     {
-        $response = $this->repostorioChareacter->getSeries($id);
-        $data=$response["results"];
+        $response = $this->repostorioChareacter->getCreators($id);
+        $data = $response["results"];
         $modelos = array();
         foreach ($data as $item) {
-            $modelo = new Series();
+            $modelo = new Creators();
             $modelo->set($item);
             $modelos[] = $modelo;
         }
@@ -82,7 +81,7 @@ class CharacterDomain implements ICharacterDomain
     public function getStories($id)
     {
         $response = $this->repostorioChareacter->getStories($id);
-        $data=$response["results"];
+        $data = $response["results"];
         $modelos = array();
         foreach ($data as $item) {
             $modelo = new Stories();

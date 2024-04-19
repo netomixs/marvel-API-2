@@ -2,33 +2,34 @@
 
 namespace App\Api\Controllers\Main;
 
-use App\Api\Controllers\Interfaces\ICharacterMain;
+use App\Api\Controllers\Interfaces\IComicMain;
+use App\Api\Domain\Core\ComicDomain;
 use Exception;
 use App\Api\Crosscuting\Respuesta;
 use App\Api\Crosscuting\HttpCode;
 use App\Api\Domain\Core\CharacterDomain;
 
-class CharacterMain implements ICharacterMain
+class ComicMain implements IComicMain
 {
-    private $domainChareacter;
+    private $domainComic;
     public function __construct()
     {
-        $this->domainChareacter = new CharacterDomain();
+        $this->domainComic = new ComicDomain();
     }
     /**
      * @OA\Get(
-     *     path="/api/character",
-     *     tags={"Character"},
-     *     summary="Obtener todos los personajes",
-     *     description="Devuelve una lista de personajes",
+     *     path="/api/comic",
+     *     tags={"Comic"},
+     *     summary="Obtener todos los comics",
+     *     description="Devuelve una lista de comics",
      *     @OA\Response(
      *         response=200,
      *         description="Operación exitosa",
-     *         @OA\JsonContent(ref="#/components/schemas/Character")
+     *         @OA\JsonContent(ref="#/components/schemas/Comics")
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Sin contenido, no hay personajes disponibles",
+     *         description="Sin contenido, no hay comics disponibles",
      *     ),
      *     @OA\Response(
      *         response=500,
@@ -40,7 +41,7 @@ class CharacterMain implements ICharacterMain
     {
         $response = new Respuesta();;
         try {
-            $data = $this->domainChareacter->getAll();
+            $data = $this->domainComic->getAll();
 
             if ($data) {
                 $response->respuesta(200, true, HttpCode::getMessageForCode(200), $data);
@@ -54,14 +55,14 @@ class CharacterMain implements ICharacterMain
     }
     /**
      * @OA\Get(
-     *     path="/api/character/{id}",
-     *     tags={"Character"},
-     *     summary="Obtener todos los personajes",
-     *     description="Devuelve una lista de personajes",
+     *     path="/api/comic/{id}",
+     *     tags={"Comic"},
+     *     summary="Obtener comic ",
+     *     description="Devuelve una comic con el id especificado",
      *  @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID del personaje",
+     *         description="ID del comic",
      *         required=true,
      *         @OA\Schema(
      *             type="integer",
@@ -71,7 +72,7 @@ class CharacterMain implements ICharacterMain
      *     @OA\Response(
      *         response=200,
      *         description="Operación exitosa",
-     *         @OA\JsonContent(ref="#/components/schemas/Character")
+     *         @OA\JsonContent(ref="#/components/schemas/Comics")
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -87,8 +88,8 @@ class CharacterMain implements ICharacterMain
     {
         $response = new Respuesta();
         try {
-            $data = $this->domainChareacter->get($id);
-      
+            $data = $this->domainComic->get($id);
+
             if ($data) {
                 $response->respuesta(200, true, HttpCode::getMessageForCode(200), $data);
             } else {
@@ -101,14 +102,14 @@ class CharacterMain implements ICharacterMain
     }
     /**
      * @OA\Get(
-     *     path="/api/character/{id}/comics",
-     *     tags={"Character"},
-     *     summary="Obtener comics del personaje especificado en el Id",
-     *     description="Lista de comics en el que aparece el personaje",
+     *     path="/api/comic/{id}/character",
+     *     tags={"Comic"},
+     *     summary="Obtener personajes del comic",
+     *     description="Lista de personajes en el que aparece el comic",
      * @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID del personaje",
+     *         description="ID del comic",
      *         required=true,
      *         @OA\Schema(
      *             type="integer",
@@ -118,11 +119,11 @@ class CharacterMain implements ICharacterMain
      *     @OA\Response(
      *         response=200,
      *         description="Operación exitosa",
-     *         @OA\JsonContent(ref="#/components/schemas/Comics")
+     *         @OA\JsonContent(ref="#/components/schemas/Character")
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Si elementos disponibles",
+     *         description="Elementos no disponibles",
      *     ),
      *     @OA\Response(
      *         response=500,
@@ -130,11 +131,11 @@ class CharacterMain implements ICharacterMain
      *     )
      * )
      */
-    public function getComic($id)
+    public function getCharacters($id)
     {
         $response = new Respuesta();
         try {
-            $data = $this->domainChareacter->getComic($id);
+            $data = $this->domainComic->getCharacters($id);
 
             if ($data) {
                 $response->respuesta(200, true, HttpCode::getMessageForCode(200), $data);
@@ -146,16 +147,16 @@ class CharacterMain implements ICharacterMain
         }
         return $response->toJson();
     }
-        /**
+    /**
      * @OA\Get(
-     *     path="/api/character/{id}/events",
-     *     tags={"Character"},
-     *     summary="Obtener eventos del personaje especificado en el Id",
-     *     description="Lista de eventos en el que aparece el personaje",
+     *     path="/api/comic/{id}/events",
+     *     tags={"Comic"},
+     *     summary="Eventos relacionados al comic",
+     *     description="Lista de eventos en el que aparece el comic",
      * @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID del personaje",
+     *         description="ID del Comic",
      *         required=true,
      *         @OA\Schema(
      *             type="integer",
@@ -169,7 +170,7 @@ class CharacterMain implements ICharacterMain
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Si elementos disponibles",
+     *         description=" elementos no disponibles",
      *     ),
      *     @OA\Response(
      *         response=500,
@@ -177,11 +178,11 @@ class CharacterMain implements ICharacterMain
      *     )
      * )
      */
-    public function getEvent($id)
+    public function getEvents($id)
     {
         $response = new Respuesta();
         try {
-            $data = $this->domainChareacter->getEvent($id);
+            $data = $this->domainComic->getEvents($id);
 
             if ($data) {
                 $response->respuesta(200, true, HttpCode::getMessageForCode(200), $data);
@@ -193,16 +194,16 @@ class CharacterMain implements ICharacterMain
         }
         return $response->toJson();
     }
-        /**
+    /**
      * @OA\Get(
-     *     path="/api/character/{id}/series",
-     *     tags={"Character"},
-     *     summary="Obtener series del personaje especificado en el Id",
-     *     description="Lista de series en el que aparece el personaje",
+     *     path="/api/comic/{id}/creators",
+     *     tags={"Comic"},
+     *     summary="Obtener los creadores del comic especificado en el Id",
+     *     description="Lista de los creadores  en el que aparece el comic",
      * @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID del personaje",
+     *         description="ID del Comic",
      *         required=true,
      *         @OA\Schema(
      *             type="integer",
@@ -212,7 +213,7 @@ class CharacterMain implements ICharacterMain
      *     @OA\Response(
      *         response=200,
      *         description="Operación exitosa",
-     *         @OA\JsonContent(ref="#/components/schemas/Series")
+     *         @OA\JsonContent(ref="#/components/schemas/Creators")
      *     ),
      *     @OA\Response(
      *         response=204,
@@ -224,11 +225,11 @@ class CharacterMain implements ICharacterMain
      *     )
      * )
      */
-    public function getSeries($id)
+    public function getCreators($id)
     {
         $response = new Respuesta();
         try {
-            $data = $this->domainChareacter->getSeries($id);
+            $data = $this->domainComic->getCreators($id);
 
             if ($data) {
                 $response->respuesta(200, true, HttpCode::getMessageForCode(200), $data);
@@ -240,16 +241,16 @@ class CharacterMain implements ICharacterMain
         }
         return $response->toJson();
     }
-        /**
+    /**
      * @OA\Get(
-     *     path="/api/character/{id}/stories",
-     *     tags={"Character"},
-     *     summary="Obtener historias del personaje especificado en el Id",
-     *     description="Lista de historias en el que aparece el personaje",
+     *     path="/api/comic/{id}/stories",
+     *     tags={"Comic"},
+     *     summary="Obtener historias del comic especificado en el Id",
+     *     description="Lista de historias en el que aparece el comic",
      * @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID del personaje",
+     *         description="ID del comic",
      *         required=true,
      *         @OA\Schema(
      *             type="integer",
@@ -275,7 +276,7 @@ class CharacterMain implements ICharacterMain
     {
         $response = new Respuesta();
         try {
-            $data = $this->domainChareacter->getStories($id);
+            $data = $this->domainComic->getStories($id);
 
             if ($data) {
                 $response->respuesta(200, true, HttpCode::getMessageForCode(200), $data);

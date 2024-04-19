@@ -32,6 +32,434 @@
                     }
                 }
             }
+        },
+        "/api/character/{id}": {
+            "get": {
+                "tags": [
+                    "Character"
+                ],
+                "summary": "Obtener todos los personajes",
+                "description": "Devuelve una lista de personajes",
+                "operationId": "9f52cbc0ee300773b87cee4377d8a22d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personaje  no encontrado"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/character/{id}/comics": {
+            "get": {
+                "tags": [
+                    "Character"
+                ],
+                "summary": "Obtener comics del personaje especificado en el Id",
+                "description": "Lista de comics en el que aparece el personaje",
+                "operationId": "15faa28af0411c504217184b6a154f9c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comics"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/character/{id}/events": {
+            "get": {
+                "tags": [
+                    "Character"
+                ],
+                "summary": "Obtener eventos del personaje especificado en el Id",
+                "description": "Lista de eventos en el que aparece el personaje",
+                "operationId": "983972bb38d58cb6e8c8ec5b46ff9e44",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/character/{id}/series": {
+            "get": {
+                "tags": [
+                    "Character"
+                ],
+                "summary": "Obtener series del personaje especificado en el Id",
+                "description": "Lista de series en el que aparece el personaje",
+                "operationId": "88607da9558d850c8237e056a4d5481c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Series"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/character/{id}/stories": {
+            "get": {
+                "tags": [
+                    "Character"
+                ],
+                "summary": "Obtener historias del personaje especificado en el Id",
+                "description": "Lista de historias en el que aparece el personaje",
+                "operationId": "b1ed3d5f1a7308bf7281c8bb05fdcd69",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stories"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/comic": {
+            "get": {
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Obtener todos los comics",
+                "description": "Devuelve una lista de comics",
+                "operationId": "aa19976296c10fff6f503c710250d12e",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comics"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Sin contenido, no hay comics disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/comic/{id}": {
+            "get": {
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Obtener comic ",
+                "description": "Devuelve una comic con el id especificado",
+                "operationId": "6c2aaaed775c9d3965c2ca5a66d587b6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comics"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personaje  no encontrado"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/comic/{id}/character": {
+            "get": {
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Obtener personajes del comic",
+                "description": "Lista de personajes en el que aparece el comic",
+                "operationId": "ffa5403d6a95f5e0eef3bf32b9525889",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Elementos no disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/comic/{id}/events": {
+            "get": {
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Eventos relacionados al comic",
+                "description": "Lista de eventos en el que aparece el comic",
+                "operationId": "378dfa96edc7994d5c858f509445e018",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del Comic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": " elementos no disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/comic/{id}/creators": {
+            "get": {
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Obtener los creadores del comic especificado en el Id",
+                "description": "Lista de los creadores  en el que aparece el comic",
+                "operationId": "ffaaf501d15a8bb17d09cb9fd64d9f47",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del Comic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Creators"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/comic/{id}/stories": {
+            "get": {
+                "tags": [
+                    "Comic"
+                ],
+                "summary": "Obtener historias del comic especificado en el Id",
+                "description": "Lista de historias en el que aparece el comic",
+                "operationId": "22af12fbe6ed9e32ede02768e48f50ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stories"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -57,6 +485,229 @@
                     "resourceUri": {
                         "description": "Recursos del personaje",
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Comics": {
+                "properties": {
+                    "id": {
+                        "description": "The unique ID of the comic resource (optional)",
+                        "type": "integer"
+                    },
+                    "digitalId": {
+                        "description": "The ID of the digital comic representation of this comic. Will be 0 if the comic is not available digitally (optional)",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "The canonical title of the comic (optional)",
+                        "type": "string"
+                    },
+                    "issueNumber": {
+                        "description": "The number of the issue in the series (will generally be 0 for collection formats) (optional)",
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "variantDescription": {
+                        "description": "If the issue is a variant (e.g. an alternate cover, second printing, or director’s cut), a text description of the variant (optional)",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The preferred description of the comic (optional)",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "The date the resource was most recently modified (optional)",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "isbn": {
+                        "description": "The ISBN for the comic (generally only populated for collection formats) (optional)",
+                        "type": "string"
+                    },
+                    "upc": {
+                        "description": "The UPC barcode number for the comic (generally only populated for periodical formats) (optional)",
+                        "type": "string"
+                    },
+                    "diamondCode": {
+                        "description": "The Diamond code for the comic (optional)",
+                        "type": "string"
+                    },
+                    "ean": {
+                        "description": "The EAN barcode for the comic (optional)",
+                        "type": "string"
+                    },
+                    "issn": {
+                        "description": "The ISSN barcode for the comic (optional)",
+                        "type": "string"
+                    },
+                    "format": {
+                        "description": "The publication format of the comic e.g. comic, hardcover, trade paperback (optional)",
+                        "type": "string"
+                    },
+                    "pageCount": {
+                        "description": "The number of story pages in the comic (optional)",
+                        "type": "integer"
+                    },
+                    "textObjects": {
+                        "description": "A set of descriptive text blurbs for the comic (optional)",
+                        "type": "any"
+                    },
+                    "resourceURI": {
+                        "description": "The canonical URL identifier for this resource (optional)",
+                        "type": "string"
+                    },
+                    "urls": {
+                        "description": "A set of public web site URLs for the resource (optional)",
+                        "type": "any"
+                    }
+                },
+                "type": "object"
+            },
+            "Creators": {
+                "description": "Creadores de comic",
+                "properties": {
+                    "id": {
+                        "description": "The unique ID of the creator resource (optional)",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "firstName": {
+                        "description": "The first name of the creator (optional)",
+                        "type": "string"
+                    },
+                    "middleName": {
+                        "description": "The middle name of the creator (optional)",
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "description": "The last name of the creator (optional)",
+                        "type": "string"
+                    },
+                    "suffix": {
+                        "description": "The suffix or honorific for the creator (optional)",
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "description": "The full name of the creator (a space-separated concatenation of the above four fields) (optional)",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "The date the resource was most recently modified (optional)",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "resourceUri": {
+                        "description": "The canonical URL identifier for this resource (optional)",
+                        "type": "string",
+                        "format": "uri"
+                    }
+                },
+                "type": "object"
+            },
+            "Events": {
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the event resource (optional)",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "The title of the event",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "A description of the event",
+                        "type": "string"
+                    },
+                    "resourceURI": {
+                        "description": "The canonical URL identifier for this resource",
+                        "type": "string"
+                    },
+                    "urls": {
+                        "description": "A set of public web site URLs for the event",
+                        "type": "any"
+                    },
+                    "modified": {
+                        "description": "The date the resource was most recently modified",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "start": {
+                        "description": "The date of publication of the first issue in this event",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "end": {
+                        "description": "The date of publication of the last issue in this event",
+                        "type": "string",
+                        "format": "date"
+                    }
+                },
+                "type": "object"
+            },
+            "Series": {
+                "properties": {
+                    "id": {
+                        "description": "The unique ID of the series resource (optional)",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "The canonical title of the series (optional)",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "A description of the series (optional)",
+                        "type": "string"
+                    },
+                    "resourceURI": {
+                        "description": "The canonical URL identifier for this resource (optional)",
+                        "type": "string"
+                    },
+                    "urls": {
+                        "description": "A set of public web site URLs for the resource (optional)",
+                        "type": "any"
+                    },
+                    "startYear": {
+                        "description": "The first year of publication for the series (optional)",
+                        "type": "integer"
+                    },
+                    "endYear": {
+                        "description": "The last year of publication for the series (conventionally, 2099 for ongoing series) (optional)",
+                        "type": "integer"
+                    },
+                    "rating": {
+                        "description": "The age-appropriateness rating for the series (optional)",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Stories": {
+                "properties": {
+                    "id": {
+                        "description": "The unique ID of the story resource (optional)",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "The story title (optional)",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "A short description of the story (optional)",
+                        "type": "string"
+                    },
+                    "resourceURI": {
+                        "description": "The canonical URL identifier for this resource (optional)",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The story type e.g. interior story, cover, text story (optional)",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "The date the resource was most recently modified (optional)",
+                        "type": "string",
+                        "format": "date"
                     }
                 },
                 "type": "object"

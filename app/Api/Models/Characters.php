@@ -34,12 +34,12 @@ namespace App\Api\Models;
  */
 class Characters
 {
-    public int $id;
-    public string $name;
-    public string $description;
-    public string $modified;
+    public ?int $id;
+    public ?string $name;
+    public ?string $description;
+    public ?string $modified;
     //public Thumbnail $thumbnail;
-    public string $resourceUri;
+    public ?string $resourceUri;
    // public Comics $comics;
    // public Series $series;
    // public Stories $stories;
