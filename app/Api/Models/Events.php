@@ -63,8 +63,8 @@ class Events
     public string $resourceUri;
     public array $urls;
     public string $modified;
-    public string $start;
-    public string $end;
+    public ?string $start;
+    public ?string $end;
     public function set($data)
     {
         foreach ($data as $key => $value) {

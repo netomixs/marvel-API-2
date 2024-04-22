@@ -460,6 +460,810 @@
                     }
                 }
             }
+        },
+        "/api/events": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener todos los eventos",
+                "description": "Devuelve una lista de los eventos",
+                "operationId": "28e1e5a44fe5921b91f34c18254e0df9",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Sin contenido, no hay eventos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener eventos por id",
+                "description": "Devuelve evento especificado",
+                "operationId": "96430866c0e06392c1ed9b0a8d3f2328",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personaje  no encontrado"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}/characters": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener personajes del evento especificado en el Id",
+                "description": "Lista de personajes que aparecen en el evento",
+                "operationId": "423252646a09701279dd7c1593658d4f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}/comics": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener comic del evento especificado en el Id",
+                "description": "Lista de comics que aparece en el evento",
+                "operationId": "c3a1143311eb6adacbf5f39c4e2da98c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comics"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}/creators": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener creadores del evento especificado en el Id",
+                "description": "Lista de creadores en el que aparece el evento",
+                "operationId": "3039d154a0bd087f7f1828ff7e6323e2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Creators"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}/series": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener series del evento especificado en el Id",
+                "description": "Lista de series en el que aparece el personaje",
+                "operationId": "6a8d1999ec206697e1d8cf62a3d3841f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Series"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}/stories": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Obtener historias del evento especificado en el Id",
+                "description": "Lista de historias en el que aparece el personaje",
+                "operationId": "b40748eed0b15230081c6ca3dc48794a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stories"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener todas la series",
+                "description": "Devuelve una lista de las series disponibles",
+                "operationId": "d0bed5f591dd4403a1c8cd8874c8807d",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Series"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Sin contenido, no hay series disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series/{id}": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener serie por id",
+                "description": "Devuelve la serie especificada por el id",
+                "operationId": "a7e70f741ef38659e6571f81414bd3d3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la serie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Series"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personaje  no encontrado"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series/{id}/characters": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener personajes de la serie especificado en el Id",
+                "description": "Lista de personajes  que aparece la serie",
+                "operationId": "984c395cc34926fa01e5d4c912b58784",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del serie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series/{id}/comics": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener comics de la serie especificado en el Id",
+                "description": "Lista de comics que aparecen en la serie",
+                "operationId": "681415727dc59c5ef72025a1978232f6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del serie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comics"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series/{id}/creators": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener creadores de la serie especificado en el Id",
+                "description": "Lista de creadores que aparecen en la serie",
+                "operationId": "7443745c1982a8cc1224d63b2dcd6fc9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del serie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Creators"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series/{id}/events": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener eventos de la serie especificado en el Id",
+                "description": "Lista de eventos que aparecen en la serie",
+                "operationId": "35b903b33d869b318938906ac309a00a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del serie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/series/{id}/stories": {
+            "get": {
+                "tags": [
+                    "Series"
+                ],
+                "summary": "Obtener historias de la serie especificado en el Id",
+                "description": "Lista de historias que aparecen en la serie",
+                "operationId": "dbec7774cdee974a53d3e630a4a4c7e3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del serie",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stories"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener todas las historias",
+                "description": "Devuelve una lista las historias",
+                "operationId": "78d9a5c3e11427406dc9bc3a9649f57a",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stories"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Sin contenido, no hay series disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories/{id}": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener historia por id",
+                "description": "Devuelve la historia especificada",
+                "operationId": "a0f2827e6015148d1789e4dc550a9eac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la historia",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Stories"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personaje  no encontrado"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories/{id}/characters": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener personajes de la historia especificado en el Id",
+                "description": "Lista de personajes que aparece en la historia",
+                "operationId": "5b4c3162c1f5414780229c99384c26bd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la historia",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories/{id}/comics": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener comics del personaje especificado en el Id",
+                "description": "Lista de comics en el que aparece el personaje",
+                "operationId": "e9dd279611dc2e9087eddfc646c4bc20",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la historia",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comics"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories/{id}/creators": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener creadores de la historia especificado en el Id",
+                "description": "Lista de creadores en el que aparece el historia",
+                "operationId": "d2883f92ae192bfdcce7f31ddd8d9c06",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la historia",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Creators"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories/{id}/events": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener eventos de la  especificado en el Id",
+                "description": "Lista de eventos en el que aparece el personaje",
+                "operationId": "1869064a32b2d42ce2f23e73fb9696b7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/api/stories/{id}/series": {
+            "get": {
+                "tags": [
+                    "Stories"
+                ],
+                "summary": "Obtener series de la historia  especificado en el Id",
+                "description": "Lista de series en el que aparece el historia",
+                "operationId": "d79973b08e31f3d0ca8a04ec16d711be",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del stories",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Series"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Si elementos disponibles"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
         }
     },
     "components": {

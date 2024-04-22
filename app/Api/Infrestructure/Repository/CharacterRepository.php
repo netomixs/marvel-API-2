@@ -12,7 +12,9 @@ class CharacterRepository implements ICharacterRepository
     {
         $api = new Api();
         $data = $api->get("v1/public/characters");
+
         $data = json_decode($data, true);
+
         $results = $data['data'];
         return  $results;
     }

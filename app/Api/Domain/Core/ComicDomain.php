@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Api\Domain\Core;
-use App\Api\Domain\Interfaces\IComicDomain;
+use App\Api\Domain\Interfaces\IComicsDomain;
 use App\Api\Infrestructure\Repository\ComicRepository;
 use  App\Api\Models\Characters;
 use App\Api\Models\Comics;
@@ -10,7 +10,7 @@ use App\Api\Models\Events;
 use App\Api\Models\Series;
 use App\Api\Models\Stories;
 
-class ComicDomain implements IComicDomain
+class ComicDomain implements IComicsDomain
 {
     private $repostorioChareacter;
     public function __construct()
